@@ -3,7 +3,6 @@ import AWS from 'aws-sdk';
 export default class S3Service {
     constructor () {
         this.s3 = null;
-        this.request = null;
     }
 
     config (auth, config) {
@@ -16,8 +15,6 @@ export default class S3Service {
             params: { ...config },
             apiVersion: '2006-03-01'
         });
-
-        this.request = new AWS.EC2({ apiVersion: '2014-10-01' }).describeInstances();
     }
 
     upload (file, config, progress) {
@@ -69,6 +66,5 @@ export default class S3Service {
 
     destroyed () {
         this.s3 = null;
-        this.request = null;
     }
 }
