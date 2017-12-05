@@ -12,7 +12,11 @@ export default class S3Service {
         });
 
         this.s3 = new AWS.S3({
-            params: { ...config },
+            params: {
+                Bucket: config.Bucket,
+                ACL: 'public-read-write'
+            },
+            region: config.region,
             apiVersion: '2006-03-01'
         });
     }
