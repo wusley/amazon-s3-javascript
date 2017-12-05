@@ -11,11 +11,19 @@ export default class S3Service {
             secretAccessKey: auth.secretAccessKey
         });
 
+        /** using a temporary credentials */
+        // let credentials = new AWS.Credentials(
+        //     auth.accessKeyId,
+        //     secretAccessKey: auth.secretAccessKey,
+        //     sessionToken: auth.sessionToken
+        // );
+
         this.s3 = new AWS.S3({
             params: {
                 Bucket: config.Bucket,
                 ACL: 'public-read-write'
             },
+            // credentials: credentials,
             region: config.region,
             apiVersion: '2006-03-01'
         });
